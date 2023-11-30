@@ -79,10 +79,14 @@
                 return results.delete();
             })
             .then(function(results){
-                console.log("success");
+                $("#display").removeClass();
+                $("#display").addClass("bg-success");
+                $("#display").html("delete success");
             })
             .catch(function(error){
-                console.log("error");
+                $("#display").removeClass();
+                $("#display").addClass("bg-warning");
+                $("#display").html("delete fail" + JSON.stringify(error));
             })
         }
 
