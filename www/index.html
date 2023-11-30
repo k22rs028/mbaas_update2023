@@ -51,7 +51,7 @@
         }
 
         function sortData() {
-           UTdata.order("score", false).fetchAll()
+           UTdata.order("score", true).fetchAll()
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
