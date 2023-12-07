@@ -11,12 +11,13 @@
     <script src="keys.js"></script>
     <script>
         let ncmb = new NCMB(appKey, clientKey);
-        let UTdata = ncmb.DataStore("UpdateTest");
+        let UTdata = ncmb.DataStore("saisyuukadai");
         let key = "score";
+        
 
         function enterData() {
             let uTdata = new UTdata();
-            let value = parseInt($("#data").val());
+            let value =  Math.floor(Math.random() * 999);
             uTdata.set(key, value)
                 .save()
                 .then(function(results) {
@@ -75,12 +76,21 @@
                 $("#display").removeClass();
                 $("#display").addClass("bg-success");
                 $("#display").html(results.count);
+
+                if((results.count %3)==0){
+                    $("body").css("background-color", "yellow");
+                }else if((results.count  %3)==1){
+                    $("body").css("background-color", "green");
+                }else{
+                    $("body").css("background-color", "skyblue");
+                }
             })
             .catch(function(error){
                 $("#display").removeClass();
                 $("#display").addClass("bg-warning");
                 $("#display").html("count fail" + JSON.stringify(error));
             })
+            
         }
 
         function deleteData() {
@@ -122,9 +132,8 @@
 </head>
 
 <body>
-    <h1 class="text-light bg-secondary">mbaas update</h1>
+    <h1 class="text-light bg-secondary">mbaas saisyuukadai</h1>
     <div>
-        <input type="text" id="data" placeholder="スコア">
         <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
     </div>
     <div>
