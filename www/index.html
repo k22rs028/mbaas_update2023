@@ -18,6 +18,7 @@
         function enterData() {
             let uTdata = new UTdata();
             let value =  Math.floor(Math.random() * 999);
+            
             uTdata.set(key, value)
                 .save()
                 .then(function(results) {
@@ -30,6 +31,14 @@
                     $("#display").addClass("bg-warning");
                     $("#display").html("enter fail");
                 })
+            
+            if(value % 2 == 0){
+               $("#text3").html("あたり")
+            }else{
+                $("#text3").html("");
+            }
+            $("#text2").html(value);
+            
         }
 
         function fetchAll() {
@@ -140,7 +149,7 @@
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
         <a onclick="sortData()" class="btn btn-outline-secondary" role="button">Sort</a>
         <a onclick="countData()" class="btn btn-outline-secondary" role="button">Count</a>
-        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>
+        <a onclick="deleteData()" class="btn btn-outline-secondary" role="button">Delete</a>
     </div>
     <div>
         <input type="text" id="update" placeholder="更新">
@@ -149,6 +158,8 @@
     <div id="display" class="text-light bg-info">
         Results
     </div>
+    <div id="text2" ></div>
+    <div id="text3"></div>
 </body>
 
 </html>
